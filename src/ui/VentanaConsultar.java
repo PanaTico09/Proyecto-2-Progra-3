@@ -93,7 +93,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, 220, 46));
+        getContentPane().add(botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, 220, 40));
 
         botonCargarTodos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonCargarTodos.setText("Cargar Todos");
@@ -105,7 +105,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonCargarTodosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCargarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 220, 46));
+        getContentPane().add(botonCargarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 220, 40));
 
         botonEliminarTodo.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonEliminarTodo.setText("Eliminar datos de la BD");
@@ -117,7 +117,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonEliminarTodoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonEliminarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 220, 46));
+        getContentPane().add(botonEliminarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 220, 40));
 
         botonCargarXDuracion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonCargarXDuracion.setText("Ordenadar x Duracion");
@@ -129,7 +129,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonCargarXDuracionActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCargarXDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 220, 46));
+        getContentPane().add(botonCargarXDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 220, 40));
 
         botonSalir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonSalir.setText("Salir");
@@ -141,7 +141,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 610, 220, 46));
+        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 610, 220, 40));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
