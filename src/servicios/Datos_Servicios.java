@@ -26,25 +26,27 @@ public class Datos_Servicios {
      * @throws SQLException
      */
     public void guardar(Connection conexion, DatosAlgoritmos datos) throws SQLException {
-        try {
-            PreparedStatement consulta;
-            if (datos.getId_algoritmo() == null) {
-                consulta = conexion.prepareStatement("INSERT INTO " + this.tabla + "(NombreAlgoritmo, TipoEstructura, Fecha, Duracion) VALUES(?, ?, ?, ?)");
-                consulta.setString(1, datos.getNombreAlgoritmo());
-                consulta.setString(2, datos.getTipoEstructura());
-                consulta.setDate(3, datos.getFecha());
-                consulta.setLong(4, datos.getDuracion());
-            } else {
-                consulta = conexion.prepareStatement("UPDATE " + this.tabla + " SET NombreAlgoritmo = ?, TipoEstructura = ?, Fecha = ?, Duracion = ?, WHERE idAlgoritmo= ?");
-                consulta.setString(1, datos.getNombreAlgoritmo());
-                consulta.setString(2, datos.getTipoEstructura());
-                consulta.setDate(3, datos.getFecha());
-                consulta.setLong(4, datos.getDuracion());
-                consulta.setInt(5, datos.getId_algoritmo());
+        if (conexion != null) {
+            try {
+                PreparedStatement consulta;
+                if (datos.getId_algoritmo() == null) {
+                    consulta = conexion.prepareStatement("INSERT INTO " + this.tabla + "(NombreAlgoritmo, TipoEstructura, Fecha, Duracion) VALUES(?, ?, ?, ?)");
+                    consulta.setString(1, datos.getNombreAlgoritmo());
+                    consulta.setString(2, datos.getTipoEstructura());
+                    consulta.setDate(3, datos.getFecha());
+                    consulta.setLong(4, datos.getDuracion());
+                } else {
+                    consulta = conexion.prepareStatement("UPDATE " + this.tabla + " SET NombreAlgoritmo = ?, TipoEstructura = ?, Fecha = ?, Duracion = ?, WHERE idAlgoritmo= ?");
+                    consulta.setString(1, datos.getNombreAlgoritmo());
+                    consulta.setString(2, datos.getTipoEstructura());
+                    consulta.setDate(3, datos.getFecha());
+                    consulta.setLong(4, datos.getDuracion());
+                    consulta.setInt(5, datos.getId_algoritmo());
+                }
+                consulta.executeUpdate();
+            } catch (SQLException ex) {
+                throw new SQLException(ex);
             }
-            consulta.executeUpdate();
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
         }
     }
 
@@ -60,18 +62,21 @@ public class Datos_Servicios {
      */
     public DatosAlgoritmos recuperarPorId(Connection conexion, int id_Algoritmo) throws SQLException {
         DatosAlgoritmos datos = null;
-        try {
-            PreparedStatement consulta = conexion.prepareStatement("SELECT NombreAlgoritmo, TipoEstructura, Fecha, Duracion FROM " + this.tabla + " WHERE idAlgoritmo = ?");
-            consulta.setInt(1, id_Algoritmo);
-            ResultSet resultado = consulta.executeQuery();
-            while (resultado.next()) {
-                datos = new DatosAlgoritmos(id_Algoritmo, resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                        resultado.getDate("Fecha"), resultado.getLong("Duracion"));
+        if (conexion != null) {
+            try {
+                PreparedStatement consulta = conexion.prepareStatement("SELECT NombreAlgoritmo, TipoEstructura, Fecha, Duracion FROM " + this.tabla + " WHERE idAlgoritmo = ?");
+                consulta.setInt(1, id_Algoritmo);
+                ResultSet resultado = consulta.executeQuery();
+                while (resultado.next()) {
+                    datos = new DatosAlgoritmos(id_Algoritmo, resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
+                            resultado.getDate("Fecha"), resultado.getLong("Duracion"));
+                }
+            } catch (SQLException ex) {
+                throw new SQLException(ex);
             }
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
+            return datos;
         }
-        return datos;
+        return null;
     }
 
     /**
@@ -84,13 +89,15 @@ public class Datos_Servicios {
      * @throws SQLException
      */
     public void eliminar(Connection conexion) throws SQLException {
-        try {
-            PreparedStatement consulta = conexion.prepareStatement("DELETE FROM " + this.tabla);
-            consulta.executeUpdate();
-            consulta = conexion.prepareStatement("ALTER TABLE datos AUTO_INCREMENT = 1");
-            consulta.executeUpdate();
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
+        if (conexion != null) {
+            try {
+                PreparedStatement consulta = conexion.prepareStatement("DELETE FROM " + this.tabla);
+                consulta.executeUpdate();
+                consulta = conexion.prepareStatement("ALTER TABLE datos AUTO_INCREMENT = 1");
+                consulta.executeUpdate();
+            } catch (SQLException ex) {
+                throw new SQLException(ex);
+            }
         }
     }
 
@@ -105,18 +112,21 @@ public class Datos_Servicios {
      * @throws SQLException
      */
     public List<DatosAlgoritmos> recuperarTodas(Connection conexion) throws SQLException {
-        List<DatosAlgoritmos> datos = new ArrayList<>();
-        try {
-            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " + this.tabla + " ORDER BY idAlgoritmo");
-            ResultSet resultado = consulta.executeQuery();
-            while (resultado.next()) {
-                datos.add(new DatosAlgoritmos(resultado.getInt("idAlgoritmo"), resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                        resultado.getDate("Fecha"), resultado.getLong("Duracion")));
+        if (conexion != null) {
+            List<DatosAlgoritmos> datos = new ArrayList<>();
+            try {
+                PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " + this.tabla + " ORDER BY idAlgoritmo");
+                ResultSet resultado = consulta.executeQuery();
+                while (resultado.next()) {
+                    datos.add(new DatosAlgoritmos(resultado.getInt("idAlgoritmo"), resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
+                            resultado.getDate("Fecha"), resultado.getLong("Duracion")));
+                }
+            } catch (SQLException ex) {
+                throw new SQLException(ex);
             }
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
+            return datos;
         }
-        return datos;
+        return null;
     }
 
     /**
@@ -130,17 +140,20 @@ public class Datos_Servicios {
      * @throws SQLException
      */
     public List<DatosAlgoritmos> recuperarMasRapido(Connection conexion) throws SQLException {
-        List<DatosAlgoritmos> datos = new ArrayList<>();
-        try {
-            PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " + this.tabla + " ORDER BY Duracion");
-            ResultSet resultado = consulta.executeQuery();
-            while (resultado.next()) {
-                datos.add(new DatosAlgoritmos(resultado.getInt("idAlgoritmo"), resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                        resultado.getDate("Fecha"), resultado.getLong("Duracion")));
+        if (conexion != null) {
+            List<DatosAlgoritmos> datos = new ArrayList<>();
+            try {
+                PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM " + this.tabla + " ORDER BY Duracion");
+                ResultSet resultado = consulta.executeQuery();
+                while (resultado.next()) {
+                    datos.add(new DatosAlgoritmos(resultado.getInt("idAlgoritmo"), resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
+                            resultado.getDate("Fecha"), resultado.getLong("Duracion")));
+                }
+            } catch (SQLException ex) {
+                throw new SQLException(ex);
             }
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
+            return datos;
         }
-        return datos;
+        return null;
     }
 }
