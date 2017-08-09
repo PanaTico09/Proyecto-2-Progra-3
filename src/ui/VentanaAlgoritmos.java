@@ -4,6 +4,7 @@ import da.Cola;
 import da.DatosAlgoritmos;
 import da.Lista;
 import da.Pila;
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -26,6 +27,9 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         initComponents();
         this.datos = new DatosAlgoritmos();
         this.setExtendedState(MAXIMIZED_BOTH);
+        PanelFondo p = new PanelFondo();
+        this.add(p, BorderLayout.CENTER);
+        p.repaint();
     }
 
     public VentanaAlgoritmos(DatosAlgoritmos a_datos) {
@@ -51,14 +55,12 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         botonConsultar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
         botonMovimientoNodos = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         BotonMergeSortSimple.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonMergeSortSimple.setText("MergeSort Simple");
@@ -67,7 +69,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonMergeSortSimpleActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonMergeSortSimple, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 191, 173, -1));
+        getContentPane().add(BotonMergeSortSimple);
+        BotonMergeSortSimple.setBounds(136, 191, 180, 37);
 
         BotonMergeSortCircular.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonMergeSortCircular.setText("MergeSort Circular");
@@ -76,7 +79,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonMergeSortCircularActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonMergeSortCircular, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 263, -1, -1));
+        getContentPane().add(BotonMergeSortCircular);
+        BotonMergeSortCircular.setBounds(136, 263, 180, 37);
 
         BotonHeapSortPila.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonHeapSortPila.setText("HeapSort Pila");
@@ -85,7 +89,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonHeapSortPilaActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonHeapSortPila, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 335, 173, -1));
+        getContentPane().add(BotonHeapSortPila);
+        BotonHeapSortPila.setBounds(136, 335, 180, 37);
 
         BotonInsertionSortCola.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonInsertionSortCola.setText("InsertionSort Cola");
@@ -94,13 +99,15 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonInsertionSortColaActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonInsertionSortCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 407, 173, -1));
+        getContentPane().add(BotonInsertionSortCola);
+        BotonInsertionSortCola.setBounds(136, 407, 180, 37);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Algoritmos de Ordenamiento");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(780, 50, 387, 37);
 
         BotonBrickSortSimple.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonBrickSortSimple.setText("BrickSort Simple");
@@ -109,7 +116,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonBrickSortSimpleActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonBrickSortSimple, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 479, 173, -1));
+        getContentPane().add(BotonBrickSortSimple);
+        BotonBrickSortSimple.setBounds(136, 479, 180, 37);
 
         botonConsultar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonConsultar.setText("Consultar Datos ");
@@ -118,21 +126,20 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 botonConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 612, 173, -1));
+        getContentPane().add(botonConsultar);
+        botonConsultar.setBounds(136, 612, 180, 37);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Consultar Historial:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 552, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(136, 552, 222, 32);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione el Algoritmo que desea ejecutar:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 131, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/My Code works.gif"))); // NOI18N
-        jLabel4.setPreferredSize(new java.awt.Dimension(690, 295));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 650, 430));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(136, 131, 502, 32);
 
         botonSalir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonSalir.setText("Salir");
@@ -141,7 +148,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 757, 173, -1));
+        getContentPane().add(botonSalir);
+        botonSalir.setBounds(136, 757, 180, 37);
 
         botonMovimientoNodos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonMovimientoNodos.setText("Movimiento Nodos");
@@ -150,13 +158,12 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 botonMovimientoNodosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonMovimientoNodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 684, -1, -1));
+        getContentPane().add(botonMovimientoNodos);
+        botonMovimientoNodos.setBounds(136, 684, 180, 37);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/Pana Logo ChillTime_opt.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 850, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/fondoPrincipal.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1920, 1100));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(1780, 850, 128, 129);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -324,8 +331,6 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

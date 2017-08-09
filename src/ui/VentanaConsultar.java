@@ -1,6 +1,7 @@
 package ui;
 
 import da.DatosAlgoritmos;
+import java.awt.BorderLayout;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,6 +21,9 @@ public class VentanaConsultar extends javax.swing.JFrame {
     public VentanaConsultar() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        PanelFondo p = new PanelFondo();
+        this.add(p, BorderLayout.CENTER);
+        p.repaint();
     }
     private final Datos_Servicios datos_servicio = new Datos_Servicios();
 
@@ -38,20 +42,20 @@ public class VentanaConsultar extends javax.swing.JFrame {
         botonVolver = new javax.swing.JButton();
         botonCargarTodos = new javax.swing.JButton();
         botonEliminarTodo = new javax.swing.JButton();
-        botonCargarXDuracion = new javax.swing.JButton();
+        botonOrdenarXDuracion = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(137, 35));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Datos Guardados");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(850, 50, 233, 37);
 
         tablaDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tablaDatos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -79,9 +83,11 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaDatos.setOpaque(false);
         jScrollPane1.setViewportView(tablaDatos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 700, 430));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(610, 260, 700, 390);
 
         botonVolver.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonVolver.setText("Volver");
@@ -93,7 +99,8 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, 220, 40));
+        getContentPane().add(botonVolver);
+        botonVolver.setBounds(110, 520, 220, 40);
 
         botonCargarTodos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonCargarTodos.setText("Cargar Todos");
@@ -105,7 +112,8 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonCargarTodosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCargarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 220, 40));
+        getContentPane().add(botonCargarTodos);
+        botonCargarTodos.setBounds(110, 260, 220, 40);
 
         botonEliminarTodo.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonEliminarTodo.setText("Eliminar datos de la BD");
@@ -117,19 +125,21 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonEliminarTodoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonEliminarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 220, 40));
+        getContentPane().add(botonEliminarTodo);
+        botonEliminarTodo.setBounds(110, 430, 220, 40);
 
-        botonCargarXDuracion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        botonCargarXDuracion.setText("Ordenadar x Duracion");
-        botonCargarXDuracion.setMaximumSize(new java.awt.Dimension(167, 37));
-        botonCargarXDuracion.setMinimumSize(new java.awt.Dimension(167, 37));
-        botonCargarXDuracion.setPreferredSize(new java.awt.Dimension(167, 37));
-        botonCargarXDuracion.addActionListener(new java.awt.event.ActionListener() {
+        botonOrdenarXDuracion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        botonOrdenarXDuracion.setText("Ordenar x Duracion");
+        botonOrdenarXDuracion.setMaximumSize(new java.awt.Dimension(167, 37));
+        botonOrdenarXDuracion.setMinimumSize(new java.awt.Dimension(167, 37));
+        botonOrdenarXDuracion.setPreferredSize(new java.awt.Dimension(167, 37));
+        botonOrdenarXDuracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCargarXDuracionActionPerformed(evt);
+                botonOrdenarXDuracionActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCargarXDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 220, 40));
+        getContentPane().add(botonOrdenarXDuracion);
+        botonOrdenarXDuracion.setBounds(110, 350, 220, 40);
 
         botonSalir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonSalir.setText("Salir");
@@ -141,18 +151,18 @@ public class VentanaConsultar extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 610, 220, 40));
+        getContentPane().add(botonSalir);
+        botonSalir.setBounds(110, 610, 220, 40);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione la operacion a realizar:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(110, 180, 391, 32);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/Pana Logo ChillTime_opt.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 850, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/fondoPrincipal.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(1780, 850, 128, 129);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,7 +201,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonCargarTodosActionPerformed
 
-    private void botonCargarXDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarXDuracionActionPerformed
+    private void botonOrdenarXDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOrdenarXDuracionActionPerformed
         try {
             List<DatosAlgoritmos> recuperarTodas = this.datos_servicio.recuperarMasRapido(Conexion.obtener());
             if (recuperarTodas.isEmpty()) {
@@ -218,7 +228,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
             System.out.println(ex);
             JOptionPane.showMessageDialog(this, "Ha surgido un error y no se han podido cargar los registros.");
         }
-    }//GEN-LAST:event_botonCargarXDuracionActionPerformed
+    }//GEN-LAST:event_botonOrdenarXDuracionActionPerformed
 
     private void botonEliminarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarTodoActionPerformed
         try {
@@ -276,13 +286,12 @@ public class VentanaConsultar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCargarTodos;
-    private javax.swing.JButton botonCargarXDuracion;
     private javax.swing.JButton botonEliminarTodo;
+    private javax.swing.JButton botonOrdenarXDuracion;
     private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaDatos;

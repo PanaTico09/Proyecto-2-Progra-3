@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author Johan Herrera
@@ -12,6 +14,9 @@ public class MovimientoNodos extends javax.swing.JFrame {
     public MovimientoNodos() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        PanelFondo p = new PanelFondo();
+        this.add(p, BorderLayout.CENTER);
+        p.repaint();
     }
 
     /**
@@ -24,8 +29,11 @@ public class MovimientoNodos extends javax.swing.JFrame {
     private void initComponents() {
 
         botonVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         botonVolver.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonVolver.setText("Volver");
@@ -34,23 +42,18 @@ public class MovimientoNodos extends javax.swing.JFrame {
                 botonVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(botonVolver);
+        botonVolver.setBounds(130, 910, 100, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(botonVolver)
-                .addContainerGap(1325, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(746, Short.MAX_VALUE)
-                .addComponent(botonVolver)
-                .addGap(49, 49, 49))
-        );
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Movimiento De Nodos");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(840, 50, 280, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/Pana Logo ChillTime_opt.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(1780, 850, 130, 130);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,5 +97,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
