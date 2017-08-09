@@ -26,23 +26,26 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="940" pref="940" max="-2" attributes="0"/>
+                      <EmptySpace min="930" pref="930" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="botonVolver" alignment="0" max="32767" attributes="0"/>
-                          <Component id="botonCargarXDuracion" alignment="0" pref="247" max="32767" attributes="0"/>
-                          <Component id="botonEliminarTodo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="botonSalir" max="32767" attributes="0"/>
-                          <Component id="botonCargarTodos" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="botonSalir" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botonVolver" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botonCargarXDuracion" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="botonCargarTodos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botonEliminarTodo" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                      <EmptySpace min="86" pref="86" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="770" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="148" max="32767" attributes="0"/>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,20 +57,21 @@
               <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="botonCargarTodos" min="-2" pref="46" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="botonCargarXDuracion" min="-2" pref="46" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Component id="botonEliminarTodo" min="-2" pref="46" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="botonVolver" min="-2" pref="46" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Component id="botonSalir" min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="670" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,8 +107,8 @@
                 <Column editable="false" title="ID Algoritmo" type="java.lang.Integer"/>
                 <Column editable="false" title="Nombre Algoritmo" type="java.lang.String"/>
                 <Column editable="false" title="Tipo Estructura" type="java.lang.String"/>
-                <Column editable="false" title="Fecha" type="java.lang.String"/>
-                <Column editable="false" title="Duracion" type="java.lang.Double"/>
+                <Column editable="false" title="Fecha (yyyy/MM/dd)" type="java.lang.String"/>
+                <Column editable="false" title="Duracion (ms)" type="java.lang.Double"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -197,6 +201,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSalirActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Seleccione la operacion a realizar:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
