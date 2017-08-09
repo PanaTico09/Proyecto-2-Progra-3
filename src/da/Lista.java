@@ -159,7 +159,7 @@ public class Lista<T extends Comparable<T>> {
             System.err.println("La Cedula debe incluir 11 digitos incluyendo los guiones,"
                     + " ademas de que no puede iniciar con 0 y el Pasaporte debe incluir una Letra y seis digitos.");
         }
-        while (cont < size()) {
+        while (cont < size) {
             if (aux.getPersona().getCedula().equals(documento)) {
                 bandera = true;
                 System.err.println("El pasaporte o Cedula introducido ya existe.");
@@ -473,7 +473,6 @@ public class Lista<T extends Comparable<T>> {
 
         //Comienza a mezclar la mitad izq y la mitad der.
         mergeS(izq, der);
-
         return cabeza;
     }
 

@@ -3,6 +3,7 @@ package main;
 import da.Cola;
 import da.Lista;
 import da.Pila;
+import ui.VentanaAlgoritmos;
 
 /**
  *
@@ -28,12 +29,9 @@ public class Proyecto2Progra3 {
         l.add("Angel", "Barrantes", "Chaves", "e770089", 18.7);
 
         System.out.println("MergeSort Simple \nLista Original: \n" + l.toString());//Imprime lista Original
-        long tiempoInicioLS = System.nanoTime();                    //Inicio Tiempo
         l.mergeSort(l.getCabeza());                                //Ordenamiento por mezcla 
         l.pasaportePrimero();                                     //Si hay pasaportes los coloca en primera posicion.
-        long tiempoTotalLS = System.nanoTime() - tiempoInicioLS; //Fin Tiempo
-        System.out.println("Tiempo de duracion de metodo de ordenacion: " + tiempoTotalLS
-                + "\nLista Ordenada: - Luego del MergeSort \n" + l.toString()); //Imprime lista Ordenada
+        System.out.println("Lista Ordenada: - Luego del MergeSort \n" + l.toString()); //Imprime lista Ordenada
 
         //Merge Sort Circular
         lc.addCircular("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Lista Circular
@@ -46,11 +44,8 @@ public class Proyecto2Progra3 {
         lc.addCircular("Angel", "Barrantes", "Chaves", "e770089", 18.7);
 
         System.out.println("MergeSort Circular \nLista Original: \n" + lc.toString());//Imprime listaCircular Original
-        long tiempoInicioLC = System.nanoTime();                   //Inicio Tiempo
         lc.mergeSortC(lc.getCabeza());                            //Ordenamiento por mezcla ListaCircular
-        long tiempoTotalLC = System.nanoTime() - tiempoInicioLC; //Fin Tiempo
-        System.out.println("Tiempo de duracion de metodo de ordenacion: " + tiempoTotalLC
-                + "\nLista Ordenada: - Luego del MergeSort \n" + lc.toString()); //Imprime listaCircular Ordenada
+        System.out.println("\nLista Ordenada: - Luego del MergeSort \n" + lc.toString()); //Imprime listaCircular Ordenada
 
         //Heap Sort
         p.push("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Pila
@@ -63,11 +58,8 @@ public class Proyecto2Progra3 {
         p.push("Angel", "Barrantes", "Chaves", "e770089", 18.7);
 
         System.out.println("HeapSort \nPila Original: \n" + p.toString());//Imprime Pila Original
-        long tiempoInicioHS = System.nanoTime();                     //Tiempo Inicio
         p.heapSort(p);                                              //Ordena la pila.
-        long tiempoTotalHS = System.nanoTime() - tiempoInicioHS;  //Fin Tiempo
-        System.out.println("Tiempo de duracion de metodo de ordenacion: " + tiempoTotalHS
-                + "\nPila Ordenada: - Luego del HeapSort \n" + p.toString()); //Imprime Pila Ordenada
+        System.out.println("Pila Ordenada: - Luego del HeapSort \n" + p.toString()); //Imprime Pila Ordenada
 
         //Insertion Sort 
         c.queue("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4);   //Añade a la Cola
@@ -80,11 +72,8 @@ public class Proyecto2Progra3 {
         c.queue("Angel", "Barrantes", "Chaves", "e770089", 18.7);
 
         System.out.println("InsertionSort \nCola Original: \n" + c.toString());//Imprime Cola Original
-        long tiempoInicioIS = System.nanoTime();                  //Inicio Tiempo 
         c.insertionSort();                                       //Ordenadimiento por Insercion
-        long tiempoTotalIS = System.nanoTime() - tiempoInicioIS;//Fin Tiempo
-        System.out.println("Tiempo de duracion de metodo de ordenacion: " + tiempoTotalIS
-                + "\nCola Ordenada: - Luego del InsertionSort\n" + c.toString()); //Imprime Cola Ordenada
+        System.out.println("Cola Ordenada: - Luego del InsertionSort\n" + c.toString()); //Imprime Cola Ordenada
 
         //Brick Sort
         b.add("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Lista
@@ -97,11 +86,17 @@ public class Proyecto2Progra3 {
         b.add("Angel", "Barrantes", "Chaves", "e770089", 18.7);
 
         System.out.println("BrickSort \nLista Original: \n" + b.toString());//Imprime lista Original
-        long tiempoInicioBS = System.nanoTime();//Inicio Tiempo 
         b.brickSort(b); //Ordenamiento por ladrillos
-        long tiempoTotalBS = System.nanoTime() - tiempoInicioBS; //Fin Tiempo
-        System.out.println("Tiempo de duracion de metodo de ordenacion: " + tiempoTotalBS
-                + "\nLista Ordenada: - Luego del BrickSort\n" + b.toString());//Imprime lista Ordenada
+        System.out.println("Lista Ordenada: - Luego del BrickSort\n" + b.toString());//Imprime lista Ordenada
+
+        //II PARTE y III PARTE VENTANA ALGORITMO
+        boolean verVentanas = true; //True = Despliega la Ventana - False = No despliega la ventana.
+        if (verVentanas) {
+            VentanaAlgoritmos vAlg = new VentanaAlgoritmos();
+            vAlg.setVisible(true);
+        } else {
+            System.out.println("Para ver la Ventana Algoritmos cambie la variable verVentanas a true "
+                    + "\nIR AL MAIN!!!");
+        }
     }
 }
-
