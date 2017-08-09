@@ -201,7 +201,7 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
     }
 
     private void BotonMergeSortSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMergeSortSimpleActionPerformed
-        long tiempoInicioLS = System.nanoTime();
+        double tiempoInicioLS = System.nanoTime();
         Lista ls = new Lista();
         ls.add("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Lista
         ls.add("Johan", "Herrera", "Araya", "1-1711-0507", 19.1);
@@ -213,14 +213,14 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         ls.add("Angel", "Barrantes", "Chaves", "e770089", 18.7);
         ls.mergeSort(ls.getCabeza());
         ls.pasaportePrimero();
-        long tiempoTotalLS = System.nanoTime() - tiempoInicioLS;
-        datos = new DatosAlgoritmos(null, "MergeSort Simple", "Lista Simple", fecha, tiempoTotalLS);
+        double tiempoTotalLS = System.nanoTime() - tiempoInicioLS;
+        datos = new DatosAlgoritmos(null, "MergeSort Simple", "Lista Simple", fecha, tiempoTotalLS/1000000);
         guardar();
         JOptionPane.showMessageDialog(this, "Se ejecuto el MergeSort Simple.");
     }//GEN-LAST:event_BotonMergeSortSimpleActionPerformed
 
     private void BotonMergeSortCircularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMergeSortCircularActionPerformed
-        long tiempoInicioLC = System.nanoTime(); 
+        double tiempoInicioLC = System.nanoTime(); 
         Lista lc = new Lista();
         lc.addCircular("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Lista Circular
         lc.addCircular("Johan", "Herrera", "Araya", "1-1711-0507", 19.1);
@@ -231,14 +231,14 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         lc.addCircular("Rogel", "Herrera", "Bellido", "8-0083-0592", 45.5);
         lc.addCircular("Angel", "Barrantes", "Chaves", "e770089", 18.7);
         lc.mergeSortC(lc.getCabeza());
-        long tiempoTotalLC = System.nanoTime() - tiempoInicioLC; 
-        datos = new DatosAlgoritmos(null, "MergeSort Circular", "Lista Circular", fecha, tiempoTotalLC);
+        double tiempoTotalLC = System.nanoTime() - tiempoInicioLC; 
+        datos = new DatosAlgoritmos(null, "MergeSort Circular", "Lista Circular", fecha, tiempoTotalLC/1000000);
         guardar();        
         JOptionPane.showMessageDialog(this, "Se ejecuto el MergeSort Circular.");
     }//GEN-LAST:event_BotonMergeSortCircularActionPerformed
 
     private void BotonHeapSortPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHeapSortPilaActionPerformed
-        long tiempoInicioHS = System.nanoTime();
+        double tiempoInicioHS = System.nanoTime();
         Pila p = new Pila();
         p.push("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Pila
         p.push("Johan", "Herrera", "Araya", "1-1711-0507", 19.1);
@@ -249,14 +249,14 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         p.push("Rogel", "Herrera", "Bellido", "8-0083-0592", 45.5);
         p.push("Angel", "Barrantes", "Chaves", "e770089", 18.7);
         p.heapSort(p);
-        long tiempoTotalHS = System.nanoTime() - tiempoInicioHS;
-        datos = new DatosAlgoritmos(null, "HeapSort", "Pila", fecha, tiempoTotalHS);
+        double tiempoTotalHS = System.nanoTime() - tiempoInicioHS;
+        datos = new DatosAlgoritmos(null, "HeapSort", "Pila", fecha, tiempoTotalHS/1000000);
         guardar();
         JOptionPane.showMessageDialog(this, "Se ejecuto el HeapSort.");
     }//GEN-LAST:event_BotonHeapSortPilaActionPerformed
 
     private void BotonInsertionSortColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertionSortColaActionPerformed
-        long tiempoInicioIS = System.nanoTime();
+        double tiempoInicioIS = System.nanoTime();
         Cola c = new Cola();
         c.queue("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4);   //Añade a la Cola
         c.queue("Johan", "Herrera", "Araya", "1-1711-0507", 19.1);
@@ -267,14 +267,14 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         c.queue("Rogel", "Herrera", "Bellido", "8-0083-0592", 41.5);
         c.queue("Angel", "Barrantes", "Chaves", "e770089", 18.7);
         c.insertionSort();
-        long tiempoTotalIS = System.nanoTime() - tiempoInicioIS;
-        datos = new DatosAlgoritmos(null, "InsertionSort", "Cola", fecha, tiempoTotalIS);
+        double tiempoTotalIS = System.nanoTime() - tiempoInicioIS;
+        datos = new DatosAlgoritmos(null, "InsertionSort", "Cola", fecha, tiempoTotalIS/1000000);
         guardar();
         JOptionPane.showMessageDialog(this, "Se ejecuto el InsertionSort.");
     }//GEN-LAST:event_BotonInsertionSortColaActionPerformed
 
     private void BotonBrickSortSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBrickSortSimpleActionPerformed
-        long tiempoInicioBS = System.nanoTime();
+        double tiempoInicioBS = System.nanoTime();
         Lista bs = new Lista();
         bs.add("Nitzia", "Chi", "Yaslin", "7-0126-0769", 39.4); //Añade a la Lista
         bs.add("Johan", "Herrera", "Araya", "1-1711-0507", 19.1);
@@ -285,8 +285,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
         bs.add("Rogel", "Herrera", "Bellido", "8-0083-0592", 45.5);
         bs.add("Angel", "Barrantes", "Chaves", "e770089", 18.7);
         bs.brickSort(bs);
-        long tiempoTotalBS = System.nanoTime() - tiempoInicioBS;
-        datos = new DatosAlgoritmos(null, "BrickSort Simple", "Lista Simple", fecha, tiempoTotalBS);
+        double tiempoTotalBS = System.nanoTime() - tiempoInicioBS;
+        datos = new DatosAlgoritmos(null, "BrickSort Simple", "Lista Simple", fecha, tiempoTotalBS/1000000);
         guardar();
         JOptionPane.showMessageDialog(this, "Se ejecuto el BrickSort Simple.");
     }//GEN-LAST:event_BotonBrickSortSimpleActionPerformed

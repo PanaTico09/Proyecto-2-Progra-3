@@ -34,13 +34,13 @@ public class Datos_Servicios {
                     consulta.setString(1, datos.getNombreAlgoritmo());
                     consulta.setString(2, datos.getTipoEstructura());
                     consulta.setDate(3, datos.getFecha());
-                    consulta.setLong(4, datos.getDuracion());
+                    consulta.setDouble(4, datos.getDuracion());
                 } else {
                     consulta = conexion.prepareStatement("UPDATE " + this.tabla + " SET NombreAlgoritmo = ?, TipoEstructura = ?, Fecha = ?, Duracion = ?, WHERE idAlgoritmo= ?");
                     consulta.setString(1, datos.getNombreAlgoritmo());
                     consulta.setString(2, datos.getTipoEstructura());
                     consulta.setDate(3, datos.getFecha());
-                    consulta.setLong(4, datos.getDuracion());
+                    consulta.setDouble(4, datos.getDuracion());
                     consulta.setInt(5, datos.getId_algoritmo());
                 }
                 consulta.executeUpdate();
@@ -69,7 +69,7 @@ public class Datos_Servicios {
                 ResultSet resultado = consulta.executeQuery();
                 while (resultado.next()) {
                     datos = new DatosAlgoritmos(id_Algoritmo, resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                            resultado.getDate("Fecha"), resultado.getLong("Duracion"));
+                            resultado.getDate("Fecha"), resultado.getDouble("Duracion"));
                 }
             } catch (SQLException ex) {
                 throw new SQLException(ex);
@@ -119,7 +119,7 @@ public class Datos_Servicios {
                 ResultSet resultado = consulta.executeQuery();
                 while (resultado.next()) {
                     datos.add(new DatosAlgoritmos(resultado.getInt("idAlgoritmo"), resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                            resultado.getDate("Fecha"), resultado.getLong("Duracion")));
+                            resultado.getDate("Fecha"), resultado.getDouble("Duracion")));
                 }
             } catch (SQLException ex) {
                 throw new SQLException(ex);
@@ -147,7 +147,7 @@ public class Datos_Servicios {
                 ResultSet resultado = consulta.executeQuery();
                 while (resultado.next()) {
                     datos.add(new DatosAlgoritmos(resultado.getInt("idAlgoritmo"), resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                            resultado.getDate("Fecha"), resultado.getLong("Duracion")));
+                            resultado.getDate("Fecha"), resultado.getDouble("Duracion")));
                 }
             } catch (SQLException ex) {
                 throw new SQLException(ex);

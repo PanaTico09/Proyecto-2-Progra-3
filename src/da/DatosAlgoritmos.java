@@ -12,7 +12,7 @@ public class DatosAlgoritmos {
     private String NombreAlgoritmo;
     private String TipoEstructura;
     private Date Fecha;
-    private Long Duracion;
+    private Double Duracion;
 
     public DatosAlgoritmos() {
         this.id_Algoritmo = null;
@@ -22,7 +22,7 @@ public class DatosAlgoritmos {
         this.Duracion = null;
     }
 
-    public DatosAlgoritmos(Integer id_Algoritmo, String NombreAlgoritmo, String TipoEstructura, Date Fecha, Long Duracion) {
+    public DatosAlgoritmos(Integer id_Algoritmo, String NombreAlgoritmo, String TipoEstructura, Date Fecha, Double Duracion) {
         this.id_Algoritmo = id_Algoritmo;
         this.NombreAlgoritmo = NombreAlgoritmo;
         this.TipoEstructura = TipoEstructura;
@@ -58,11 +58,11 @@ public class DatosAlgoritmos {
         this.Fecha = Fecha;
     }
 
-    public Long getDuracion() {
+    public Double getDuracion() {
         return Duracion;
     }
 
-    public void setDuracion(Long Duracion) {
+    public void setDuracion(Double Duracion) {
         this.Duracion = Duracion;
     }
 
