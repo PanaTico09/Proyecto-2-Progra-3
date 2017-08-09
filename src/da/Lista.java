@@ -327,39 +327,47 @@ public class Lista<T extends Comparable<T>> {
      * Busca si hay pasaportes en la lista de ser asi los agrega de primero.</p>
      */
     public void pasaportePrimero() {
-        if (!isEmpty()) {
-            Nodo aux = cabeza;
-            int cont = 0;
+        Nodo aux = cabeza;
+        Lista cedulaAux = new Lista();
+        Lista pasaporteAux = new Lista();
 
-            while (aux != null) { //Recorre la Lista.
-                if (pasaporteCedula(aux.getPersona().getCedula())) { //Cuenta la cantidad de personas registradas con pasaporte.
-                    cont++;
-                }
+        while (aux != null) {
+            if (pasaporteCedula(aux.getPersona().getCedula())) { //Si es un pasaporte lo agrega a la pila auxiliar de pasaportes.
+                pasaporteAux.add(aux.getPersona().getNombre(), aux.getPersona().getApellido(),
+                        aux.getPersona().getApellido2(), aux.getPersona().getCedula(), aux.getPersona().getEdad());
+            } else {
+                cedulaAux.add(aux.getPersona().getNombre(), aux.getPersona().getApellido(), //Sino lo agrega a la pila auxiliar de cedulas.
+                        aux.getPersona().getApellido2(), aux.getPersona().getCedula(), aux.getPersona().getEdad());
+            }
+            aux = aux.getSiguiente();
+        }
+        int cont = size;
+        while (cont > 0) {
+            remove(0);
+            cont--;
+        }
+        agregarDesdeListaAux(pasaporteAux);
+        agregarDesdeListaAux(cedulaAux);
+    }
+
+    /**
+     * <h1>Agregar Desde ListaAux</h1>
+     * <p>
+     * Agrega a las persona desde otras listas. Y vacia la lista auxiliar.</p>
+     *
+     * @param listaAux
+     */
+    public void agregarDesdeListaAux(Lista listaAux) {
+        if (!listaAux.isEmpty()) {
+            Nodo aux = listaAux.cabeza;
+            while (aux != null) {
+                add(aux.getPersona().getNombre(), aux.getPersona().getApellido(), //Agrega los pasaportes a la Lista original.
+                        aux.getPersona().getApellido2(), aux.getPersona().getCedula(), aux.getPersona().getEdad());
                 aux = aux.getSiguiente();
             }
-            int cont2 = 0;
-            while (cont > 0) { //Repite el proceso hasta que todos los pasaportes se encuentren ubicados antes de las cedulas.
-                aux = cabeza;
-                Nodo aux2 = aux;
-                while (aux != null) { //Recorre la lista
-                    if (pasaporteCedula(aux.getPersona().getCedula())) { //Busca si alguna persona de la lista esta registrada con un pasaporte.
-                        break;
-                    }
-                    cont2++;
-                    aux = aux.getSiguiente();
-                }
-                int cont3 = cont2;
-                while (cont3 > 0) { //Remueve de la lista todas las personas que esten registradas con una cedula dejando solo los que tengan pasaporte.
-                    remove(0);
-                    cont3--;
-                }
-                ultimoNodoLista();
-                while (cont2 > 0) { //Añade nuevamente las personas a la lista.
-                    add(aux2.getPersona().getNombre(), aux2.getPersona().getApellido(),
-                            aux2.getPersona().getApellido2(), aux2.getPersona().getCedula(), aux2.getPersona().getEdad());
-                    aux2 = aux2.getSiguiente();
-                    cont2--;
-                }
+            int cont = listaAux.size;
+            while (cont > 0) {
+                listaAux.remove(0);
                 cont--;
             }
         }
@@ -698,4 +706,3 @@ public class Lista<T extends Comparable<T>> {
     }
 
 }
-

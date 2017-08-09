@@ -37,24 +37,31 @@ public class VentanaConsultar extends javax.swing.JFrame {
         tablaDatos = new javax.swing.JTable();
         botonVolver = new javax.swing.JButton();
         botonCargarTodos = new javax.swing.JButton();
-        botonCargarXDuracion = new javax.swing.JButton();
         botonEliminarTodo = new javax.swing.JButton();
+        botonCargarXDuracion = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(137, 35));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Datos Guardados");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, -1, -1));
 
         tablaDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tablaDatos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tablaDatos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tablaDatos.setForeground(new java.awt.Color(0, 0, 0));
         tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Algoritmo", "Nombre Algoritmo", "Tipo Estructura", "Fecha (yyyy/MM/dd)", "Duracion (ms)"
+                "ID Algoritmo", "Nombre Algoritmo", "Tipo Estructura", "Fecha ", "Duracion (ms)"
             }
         ) {
             Class[] types = new Class [] {
@@ -74,94 +81,78 @@ public class VentanaConsultar extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaDatos);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 700, 430));
+
         botonVolver.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonVolver.setText("Volver");
+        botonVolver.setMaximumSize(new java.awt.Dimension(167, 37));
+        botonVolver.setMinimumSize(new java.awt.Dimension(167, 37));
+        botonVolver.setPreferredSize(new java.awt.Dimension(167, 37));
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, 220, 46));
 
         botonCargarTodos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonCargarTodos.setText("Cargar Todos");
+        botonCargarTodos.setMaximumSize(new java.awt.Dimension(167, 37));
+        botonCargarTodos.setMinimumSize(new java.awt.Dimension(167, 37));
+        botonCargarTodos.setPreferredSize(new java.awt.Dimension(167, 37));
         botonCargarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarTodosActionPerformed(evt);
             }
         });
-
-        botonCargarXDuracion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        botonCargarXDuracion.setText("Ordenados por Duracion");
-        botonCargarXDuracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCargarXDuracionActionPerformed(evt);
-            }
-        });
+        getContentPane().add(botonCargarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 220, 46));
 
         botonEliminarTodo.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonEliminarTodo.setText("Eliminar datos de la BD");
+        botonEliminarTodo.setMaximumSize(new java.awt.Dimension(167, 37));
+        botonEliminarTodo.setMinimumSize(new java.awt.Dimension(167, 37));
+        botonEliminarTodo.setPreferredSize(new java.awt.Dimension(167, 37));
         botonEliminarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarTodoActionPerformed(evt);
             }
         });
+        getContentPane().add(botonEliminarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 220, 46));
+
+        botonCargarXDuracion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        botonCargarXDuracion.setText("Ordenadar x Duracion");
+        botonCargarXDuracion.setMaximumSize(new java.awt.Dimension(167, 37));
+        botonCargarXDuracion.setMinimumSize(new java.awt.Dimension(167, 37));
+        botonCargarXDuracion.setPreferredSize(new java.awt.Dimension(167, 37));
+        botonCargarXDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarXDuracionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCargarXDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 220, 46));
 
         botonSalir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonSalir.setText("Salir");
+        botonSalir.setMaximumSize(new java.awt.Dimension(167, 37));
+        botonSalir.setMinimumSize(new java.awt.Dimension(167, 37));
+        botonSalir.setPreferredSize(new java.awt.Dimension(167, 37));
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 610, 220, 46));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione la operacion a realizar:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(930, 930, 930)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(botonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonVolver, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonCargarXDuracion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                .addComponent(botonCargarTodos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonEliminarTodo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(86, 86, 86)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(75, 75, 75)
-                        .addComponent(botonCargarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(botonCargarXDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
-                        .addComponent(botonEliminarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
-                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/Pana Logo ChillTime_opt.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 850, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/fondoPrincipal.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,6 +282,8 @@ public class VentanaConsultar extends javax.swing.JFrame {
     private javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaDatos;
     // End of variables declaration//GEN-END:variables

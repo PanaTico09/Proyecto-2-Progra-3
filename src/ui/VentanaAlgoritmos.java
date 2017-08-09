@@ -42,23 +42,23 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         BotonMergeSortSimple = new javax.swing.JButton();
         BotonMergeSortCircular = new javax.swing.JButton();
         BotonHeapSortPila = new javax.swing.JButton();
         BotonInsertionSortCola = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         BotonBrickSortSimple = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         botonConsultar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
         botonMovimientoNodos = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Algoritmos de Ordenamiento");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BotonMergeSortSimple.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonMergeSortSimple.setText("MergeSort Simple");
@@ -67,6 +67,7 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonMergeSortSimpleActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonMergeSortSimple, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 191, 173, -1));
 
         BotonMergeSortCircular.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonMergeSortCircular.setText("MergeSort Circular");
@@ -75,6 +76,7 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonMergeSortCircularActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonMergeSortCircular, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 263, -1, -1));
 
         BotonHeapSortPila.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonHeapSortPila.setText("HeapSort Pila");
@@ -83,6 +85,7 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonHeapSortPilaActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonHeapSortPila, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 335, 173, -1));
 
         BotonInsertionSortCola.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonInsertionSortCola.setText("InsertionSort Cola");
@@ -91,6 +94,13 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonInsertionSortColaActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonInsertionSortCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 407, 173, -1));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Algoritmos de Ordenamiento");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, -1, -1));
 
         BotonBrickSortSimple.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         BotonBrickSortSimple.setText("BrickSort Simple");
@@ -99,9 +109,7 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 BotonBrickSortSimpleActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setText("Seleccione el Algoritmo que desea ejecutar:");
+        getContentPane().add(BotonBrickSortSimple, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 479, 173, -1));
 
         botonConsultar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonConsultar.setText("Consultar Datos ");
@@ -110,9 +118,21 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 botonConsultarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 612, 173, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Consultar Historial:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 552, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Seleccione el Algoritmo que desea ejecutar:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 131, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/My Code works.gif"))); // NOI18N
+        jLabel4.setPreferredSize(new java.awt.Dimension(690, 295));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 650, 430));
 
         botonSalir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonSalir.setText("Salir");
@@ -121,6 +141,7 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 757, 173, -1));
 
         botonMovimientoNodos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         botonMovimientoNodos.setText("Movimiento Nodos");
@@ -129,60 +150,13 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
                 botonMovimientoNodosActionPerformed(evt);
             }
         });
+        getContentPane().add(botonMovimientoNodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 684, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(BotonMergeSortCircular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonMergeSortSimple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonHeapSortPila, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonInsertionSortCola, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonBrickSortSimple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(botonConsultar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonMovimientoNodos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(726, 726, 726)
-                        .addComponent(jLabel1)))
-                .addContainerGap(444, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel2)
-                .addGap(36, 36, 36)
-                .addComponent(BotonMergeSortSimple)
-                .addGap(35, 35, 35)
-                .addComponent(BotonMergeSortCircular)
-                .addGap(35, 35, 35)
-                .addComponent(BotonHeapSortPila)
-                .addGap(35, 35, 35)
-                .addComponent(BotonInsertionSortCola)
-                .addGap(35, 35, 35)
-                .addComponent(BotonBrickSortSimple)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel3)
-                .addGap(36, 36, 36)
-                .addComponent(botonConsultar)
-                .addGap(35, 35, 35)
-                .addComponent(botonMovimientoNodos)
-                .addGap(36, 36, 36)
-                .addComponent(botonSalir)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/Pana Logo ChillTime_opt.jpg"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 850, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/imagenes/fondoPrincipal.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1920, 1100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -350,5 +324,8 @@ public class VentanaAlgoritmos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
