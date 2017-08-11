@@ -72,7 +72,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
         getContentPane().add(botonMergeSort);
         botonMergeSort.setBounds(160, 440, 140, 40);
         getContentPane().add(gifPanel);
-        gifPanel.setBounds(750, 440, 500, 200);
+        gifPanel.setBounds(650, 270, 660, 490);
 
         botonGenerar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonGenerar.setText("Generar");

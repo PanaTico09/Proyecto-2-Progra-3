@@ -24,7 +24,7 @@ import javax.swing.SwingWorker;
 public class PanelGif extends JPanel {
 
     private final int NUM_BOX = 8;
-    private final Dimension dimension = new Dimension(1280, 720);
+    private final Dimension dimension = new Dimension(320, 128);
     private final int max = 12;
     private final int min = 1;
     private BoxNumber[] bNumber;
@@ -87,7 +87,7 @@ public class PanelGif extends JPanel {
 
     public class BrickWorker extends SwingWorker<Void, Void> {
 
-        private final int velocidad = 10; //velocidad de animacion (msegundos)  
+        private final int velocidad = 8; //velocidad de animacion (msegundos)  
 
         @Override
         protected Void doInBackground() throws Exception {
@@ -159,30 +159,99 @@ public class PanelGif extends JPanel {
 
     public class MergeWorker extends SwingWorker<Void, Void> { //Aun no funciona como Merge
 
-        private final int velocidad = 10; //velocidad de animacion (milisegundos)  
+        private final int velocidad = 8; //velocidad de animacion (milisegundos)  
+        public boolean completado = false;
 
         @Override
         protected Void doInBackground() throws Exception {
-            int i, j;
-            BoxNumber aux;
-            for (i = 0; i < bNumber.length - 1; i++) {
-                for (j = 0; j < bNumber.length - i - 1; j++) {
-                    if (bNumber[j + 1].getValue() < bNumber[j].getValue()) {
-                        aux = bNumber[j + 1];
-                        girar(j, j + 1);
-                        bNumber[j + 1] = bNumber[j];
-                        bNumber[j] = aux;
-                    }
-                }
-            }
+            merges(bNumber);
             
             JOptionPane.showMessageDialog(null, "El arreglo ha sido ordenado correctamente.");
             MovimientoNodos.terminarEjecutar = false;
             return null;
         }
 
+        private void merges(BoxNumber[] a) {
+            BoxNumber[] aux = new BoxNumber[a.length];
+            mergeSort(a, aux, 0, a.length - 1);
+
+        }
+
+        private void mergeSort(BoxNumber[] a, BoxNumber[] aux, int left, int right) {
+            if (left < right) {
+                int center = (left + right) / 2;
+                separar(center);
+//                JOptionPane.showMessageDialog(null, "");
+                mergeSort(a, aux, left, center);
+                
+                mergeSort(a, aux, center + 1, right);
+                merge(a, aux, left, center + 1, right);
+            }
+        }
+
+        private void merge(BoxNumber[] a, BoxNumber[] tmp, int left, int right, int rightEnd) {
+            int leftEnd = right - 1;
+            int k = left;
+            int num = rightEnd - left + 1;
+
+            while (left <= leftEnd && right <= rightEnd) {
+                if (a[left].getValue() <= a[right].getValue()) {
+                    tmp[k++] = a[left++];
+
+                } else {
+                    tmp[k++] = a[right++];
+                }
+            }
+
+            while (left <= leftEnd) // Copy rest of first half
+            {
+                tmp[k++] = a[left++];
+            }
+
+            while (right <= rightEnd) // Copy rest of right half
+            {
+                tmp[k++] = a[right++];
+            }
+
+            // Copy tmp back
+            for (int i = 0; i < num; i++, rightEnd--) {
+                a[rightEnd] = tmp[rightEnd];
+
+            }
+        }
+
+        private void separar(int mitad) {
+            int cantCajas = mitad;
+            while (cantCajas >= 0) {
+                for (int i = 0; i < bNumber[0].HEIGHT; i++) {
+                    bNumber[cantCajas].y += 1;
+                    try {
+                        Thread.sleep(velocidad);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                cantCajas--;
+            }
+        }
+
+        private void unir() {
+            int a = 0;
+            for (int i = 0; i < bNumber[0].HEIGHT; i++) {
+                bNumber[a].y -= 1;
+                try {
+                    Thread.sleep(velocidad);
+                } catch (InterruptedException e) {
+                }
+                repaint();
+            }
+            if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
+                girar(a, a + 1);
+            }
+        }
+
         private void girar(int a, int b) {
-            //Movimiento Vertical
+//            Movimiento Vertical
             for (int i = 0; i < bNumber[0].HEIGHT; i++) {
                 bNumber[a].y -= 1;
                 bNumber[b].y += 1;

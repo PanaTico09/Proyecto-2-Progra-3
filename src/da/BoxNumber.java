@@ -27,7 +27,6 @@ public class BoxNumber {
     private final Color colorBg;
     private Dimension dimensionText;
     private final Color[] color = {new Color(255, 0, 0),
-        new Color(36, 0, 255),
         new Color(255, 0, 246),
         new Color(0, 246, 255),
         new Color(48, 255, 0),
