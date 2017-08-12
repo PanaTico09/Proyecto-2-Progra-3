@@ -131,7 +131,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
 
     private void botonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarActionPerformed
         if (!terminarEjecutar) {
-            gifPanel.generar();
+            gifPanel.generarEspecificos();
         }
     }//GEN-LAST:event_botonGenerarActionPerformed
 
