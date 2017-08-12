@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.Graphics;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,37 +16,38 @@ import org.junit.Test;
  *
  * @author Johan Herrera
  */
-public class MovimientoNodosTest {
-    
-    public MovimientoNodosTest() {
+public class PanelFondoTest {
+
+    public PanelFondoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of main method, of class MovimientoNodos.
+     * Test of paintComponent method, of class PanelFondo.
      */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        MovimientoNodos.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        
+    public void testPaintComponent() {
+        System.out.println("paintComponent");
+        Graphics g = null;
+        if (g != null) {
+            PanelFondo instance = new PanelFondo();
+            instance.paintComponent(g);
+        }
     }
-    
+
 }

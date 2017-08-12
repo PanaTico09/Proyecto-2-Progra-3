@@ -51,35 +51,6 @@ public class Datos_Servicios {
     }
 
     /**
-     * <h1>RecuperarPorID</h1>
-     * <p>
-     * Busca en la base de datos el id especificado.</p>
-     *
-     * @param conexion
-     * @param id_Algoritmo
-     * @return Los datos asociados al id especificado.
-     * @throws SQLException
-     */
-    public DatosAlgoritmos recuperarPorId(Connection conexion, int id_Algoritmo) throws SQLException {
-        DatosAlgoritmos datos = null;
-        if (conexion != null) {
-            try {
-                PreparedStatement consulta = conexion.prepareStatement("SELECT NombreAlgoritmo, TipoEstructura, Fecha, Duracion FROM " + this.tabla + " WHERE idAlgoritmo = ?");
-                consulta.setInt(1, id_Algoritmo);
-                ResultSet resultado = consulta.executeQuery();
-                while (resultado.next()) {
-                    datos = new DatosAlgoritmos(id_Algoritmo, resultado.getString("NombreAlgoritmo"), resultado.getString("TipoEstructura"),
-                            resultado.getDate("Fecha"), resultado.getDouble("Duracion"));
-                }
-            } catch (SQLException ex) {
-                throw new SQLException(ex);
-            }
-            return datos;
-        }
-        return null;
-    }
-
-    /**
      * <h1>Eliminar</h1>
      * <p>
      * Borra todos los datos que se encuentran almacenados en la base de
