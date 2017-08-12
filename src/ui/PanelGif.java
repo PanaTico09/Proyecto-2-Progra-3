@@ -57,7 +57,6 @@ public class PanelGif extends JPanel {
             bNumber[i].y = getHeight() / 2 - bNumber[i].HEIGHT / 2;
             int num = rn.nextInt(max - min + 1) + min;
             bNumber[i].setNumber(String.valueOf(num));
-
         }
         repaint();
     }
