@@ -68,12 +68,12 @@ public class PanelGif extends JPanel {
      */
     public void generarEspecificos() {
         bNumber = new BoxNumber[NUM_BOX];
-        int a = 3;
-        int b = 2;
-        int c = 4;
-        int d = 6;
-        int e = 3;
-        int f = 12;
+        int a = 4;
+        int b = 8;
+        int c = 7;
+        int d = 12;
+        int e = 9;
+        int f = 6;
         for (int i = 0; i < NUM_BOX; i++) {
             bNumber[i] = new BoxNumber();
             bNumber[i].x = 10 + bNumber[i].WIDTH * i;
@@ -709,8 +709,8 @@ public class PanelGif extends JPanel {
                 bNumber[a + 3] = bNumber[a + 5];
                 bNumber[a + 4] = aux2;
                 bNumber[a + 5] = aux3;
-            } else if (bNumber[a + 4].getValue() <= bNumber[a + 2].getValue() && bNumber[a + 5].getValue() >= bNumber[a + 3].getValue()) {
-                BoxNumber aux = bNumber[a + 2];                                     //Primero ult lista menor a cuar y seg ult lista menor a cuar prim lista
+            } else if (bNumber[a + 4].getValue() <= bNumber[a + 2].getValue() && bNumber[a + 5].getValue() >= bNumber[a + 3].getValue() && bNumber[a + 4].getValue() >= bNumber[a + 1].getValue()) {
+                BoxNumber aux = bNumber[a + 2];                                     //Primero ult lista menor a ter y seg ult lista mayor a cuar prim lista
                 BoxNumber aux2 = bNumber[a + 3];
                 for (int i = 0; i < bNumber[0].WIDTH; i++) {
                     bNumber[a + 2].x += 1;
@@ -725,8 +725,8 @@ public class PanelGif extends JPanel {
                 bNumber[a + 2] = bNumber[a + 4];
                 bNumber[a + 3] = aux;
                 bNumber[a + 4] = aux2;
-            } else if (bNumber[a + 4].getValue() <= bNumber[a + 2].getValue() && bNumber[a + 5].getValue() <= bNumber[a + 3].getValue()) {
-                BoxNumber aux = bNumber[a + 2];                                     //Primero ult lista menor a cuar y seg ult lista menor a cuar prim lista
+            } else if (bNumber[a + 4].getValue() <= bNumber[a + 2].getValue() && bNumber[a + 5].getValue() <= bNumber[a + 3].getValue() && bNumber[a + 4].getValue() >= bNumber[a + 1].getValue()) {
+                BoxNumber aux = bNumber[a + 2];                                     //Primero ult lista menor a ter y seg ult lista menor a cuar prim lista
                 BoxNumber aux2 = bNumber[a + 3];
                 for (int i = 0; i < bNumber[0].WIDTH; i++) {
                     bNumber[a + 2].x += 1;
@@ -743,8 +743,34 @@ public class PanelGif extends JPanel {
                 bNumber[a + 3] = aux;
                 bNumber[a + 4] = bNumber[a + 5];
                 bNumber[a + 5] = aux2;
-            } else {
+            } else if (bNumber[a + 4].getValue() <= bNumber[a + 1].getValue() && bNumber[a + 5].getValue() >= bNumber[a + 3].getValue()) {
+                BoxNumber aux = bNumber[a + 1];
+                BoxNumber aux2 = bNumber[a + 2];
+                BoxNumber aux3 = bNumber[a + 3];
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a + 1].x += 1;
+                    bNumber[a + 2].x += 1;
+                    bNumber[a + 3].x += 1;
+                    bNumber[a + 4].x -= 3;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a + 1] = bNumber[a + 4];
+                bNumber[a + 2] = aux;
+                bNumber[a + 3] = aux2;
+                bNumber[a + 4] = aux3;
+            } else { //Peor de los casos.
+                ordenar(a, a + 4, 4);
+                ordenar(a + 1, a + 4, 3);
+                ordenar(a + 2, a + 4, 2);
                 ordenar(a + 3, a + 4, 1);
+                ordenar(a + 4, a + 5, 1);
+                ordenar(a + 3, a + 4, 1);
+                ordenar(a + 2, a + 3, 1);
+                ordenar(a + 1, a + 2, 1);
             }
         }
 
