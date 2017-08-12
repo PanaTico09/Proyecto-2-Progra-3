@@ -92,6 +92,7 @@ public class PanelGif extends JPanel {
 
         @Override
         protected Void doInBackground() throws Exception {
+            //BrickSort
             int i, j;
             BoxNumber aux;
             int cont = 0;
@@ -117,11 +118,19 @@ public class PanelGif extends JPanel {
                 }
                 cont++;
             }
-            JOptionPane.showMessageDialog(null, "El arreglo ha sido ordenado correctamente.");
+            JOptionPane.showMessageDialog(null, "El ordenamiento a finalizado correctamente.");
             MovimientoNodos.terminarEjecutar = false;
             return null;
         }
 
+        /**
+         * <h1>Girar</h1>
+         * <p>
+         * Gira los rectangulos para ubicarlos en la posicion debida.</p>
+         *
+         * @param a posicion en el array
+         * @param b posicion en el array
+         */
         private void girar(int a, int b) {
             //Movimiento vertical
             for (int i = 0; i < bNumber[0].HEIGHT; i++) {
@@ -161,12 +170,10 @@ public class PanelGif extends JPanel {
     public class MergeWorker extends SwingWorker<Void, Void> { //Solo separa la lista (ACTUALMENTE)
 
         private final int velocidad = 8; //velocidad de animacion (milisegundos)  
-        public boolean completado = false;
 
         @Override
         protected Void doInBackground() throws Exception {
             animar();
-            JOptionPane.showMessageDialog(null, "El arreglo ha sido ordenado correctamente.");
             MovimientoNodos.terminarEjecutar = false;
             return null;
         }
@@ -179,6 +186,16 @@ public class PanelGif extends JPanel {
         private void animar() {
             merge();
             mergeSort();
+            int cont = 0;
+            while (cont < bNumber.length - 1) {
+                if (bNumber[cont].getValue() > bNumber[cont + 1].getValue()) {
+                    JOptionPane.showMessageDialog(null, "No se ha ordenado correctamente.");
+                }
+                cont++;
+                if (cont == bNumber.length - 1) {
+                    JOptionPane.showMessageDialog(null, "El ordenamiento a finalizado correctamente.");
+                }
+            }
         }
 
         /**
@@ -230,7 +247,7 @@ public class PanelGif extends JPanel {
         /**
          * <h1>MergeSort</h1>
          * <p>
-         * Une y ordena los rectangulos.</p>
+         * Ordenamiento por mezcla.</p>
          */
         private void mergeSort() {
             int a = 0;
@@ -240,11 +257,20 @@ public class PanelGif extends JPanel {
             a += 2;
             mergeP3(a);
             a = 0;
+            mov2Y(a);
             mergeP4(a);
             a = 0;
+            mov4Y(a);
             mergeP5(a);
         }
 
+        /**
+         * <h1>MergeP1<h1>
+         * <p>
+         * Merge parte 1.</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mergeP1(int a) {
             movY(a);
             if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
@@ -276,10 +302,17 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>MergeP2<h1>
+         * <p>
+         * Merge parte 2.</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mergeP2(int a) {
             if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
                 BoxNumber aux = bNumber[a];
-                primerMovXY(a);
+                movXY(a);
                 for (int i = 0; i < bNumber[a].HEIGHT; i++) {
                     bNumber[a + 1].y += 1;
                     bNumber[a].y += 1;
@@ -304,10 +337,17 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>MergeP3<h1>
+         * <p>
+         * Merge parte 3.</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mergeP3(int a) {
             if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
                 BoxNumber aux = bNumber[a];
-                primerMovXY(a);
+                movXY(a);
                 for (int i = 0; i < bNumber[a].HEIGHT; i++) {
                     bNumber[a + 1].y += 2;
                     bNumber[a].y += 4;
@@ -332,43 +372,65 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>MergeP4<h1>
+         * <p>
+         * Merge parte 4.</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mergeP4(int a) {
-            mov2Y(a);
-            if (bNumber[a].getValue() > bNumber[a + 2].getValue()) {
-                BoxNumber aux = bNumber[a];
-                girar(a, a + 2);
-                movX(a, a + 2, 2);
-                bNumber[a] = bNumber[a + 2];
-                bNumber[a + 2] = aux;
-            }
-            if (bNumber[a + 1].getValue() > bNumber[a + 2].getValue()) {
-                BoxNumber aux = bNumber[a + 1];
-                girar(a + 1, a + 2);
-                movX(a + 1, a + 2, 1);
-                bNumber[a + 1] = bNumber[a + 2];
-                bNumber[a + 2] = aux;
-            }
-            if (bNumber[a + 2].getValue() > bNumber[a + 3].getValue()) {
-                BoxNumber aux = bNumber[a + 2];
-                girar(a + 2, a + 3);
-                movX(a + 2, a + 3, 1);
-                bNumber[a + 2] = bNumber[a + 3];
-                bNumber[a + 3] = aux;
-            }
-            if (bNumber[a + 1].getValue() > bNumber[a + 2].getValue()) {
-                BoxNumber aux = bNumber[a + 1];
-                girar(a + 1, a + 2);
-                movX(a + 1, a + 2, 1);
-                bNumber[a + 1] = bNumber[a + 2];
-                bNumber[a + 2] = aux;
-            }
+            ordenar(a, a + 2, 2);
+            ordenar(a + 1, a + 2, 1);
+            ordenar(a + 2, a + 3, 1);
+            ordenar(a + 1, a + 2, 1);
         }
 
+        /**
+         * <h1>MergeP5<h1>
+         * <p>
+         * Merge parte 5.</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mergeP5(int a) {
-            mov4Y(a);
-            
+            ordenar(a, a + 4, 4);
+            ordenar(a + 1, a + 4, 3);
+            ordenar(a + 2, a + 4, 2);
+            ordenar(a + 3, a + 4, 1);
+            ordenar(a + 4, a + 5, 1);
+            ordenar(a + 3, a + 4, 1);
+            ordenar(a + 2, a + 3, 1);
+            ordenar(a + 1, a + 2, 1);
         }
 
+        /**
+         * <h1>Ordenar</h1>
+         * <p>
+         * Ordena los rectangulos de menor a mayor.</p>
+         *
+         * @param a posicion en el array
+         * @param b posicion en el array
+         * @param espacios cant. de espacios que se debe mover para quedar
+         * ordenado.
+         */
+        public void ordenar(int a, int b, int espacios) {
+            if (bNumber[a].getValue() > bNumber[b].getValue()) {
+                BoxNumber aux = bNumber[a];
+                girar(a, b);
+                movX(a, b, espacios);
+                bNumber[a] = bNumber[b];
+                bNumber[b] = aux;
+            }
+        }
+
+        /**
+         * <h1>MovY<h1>
+         * <p>
+         * Mueve el rectangulo en Y</p>
+         *
+         * @param a posicion en el array.
+         */
         private void movY(int a) {
             for (int i = 0; i < bNumber[a].HEIGHT; i++) {
                 bNumber[a].y -= 1;
@@ -380,6 +442,13 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>Mov2Y<h1>
+         * <p>
+         * Mueve dos rectangulos en Y</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mov2Y(int a) {
             int cont = 0;
             while (cont < 3) {
@@ -396,6 +465,13 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>Mov4Y<h1>
+         * <p>
+         * Mueve cuatro rectangulos en Y</p>
+         *
+         * @param a posicion en el array.
+         */
         private void mov4Y(int a) {
             for (int i = 0; i < bNumber[a].HEIGHT; i++) {
                 bNumber[a].y -= 1;
@@ -405,14 +481,21 @@ public class PanelGif extends JPanel {
                 bNumber[a + 4].y += 2;
                 bNumber[a + 5].y += 2;
                 try {
-                    Thread.sleep(velocidad);
+                    Thread.sleep(velocidad * 2);
                 } catch (InterruptedException e) {
                 }
                 repaint();
             }
         }
 
-        private void primerMovXY(int a) {
+        /**
+         * <h1>MovXY<h1>
+         * <p>
+         * Mueve dos rectangulos en X y Y</p>
+         *
+         * @param a posicion en el array.
+         */
+        private void movXY(int a) {
             for (int i = 0; i < bNumber[a].HEIGHT; i++) {
                 bNumber[a + 1].y += 2;
                 bNumber[a].y -= 2;
@@ -433,6 +516,13 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>MovX<h1>
+         * <p>
+         * Mueve el rectangulo en X</p>
+         *
+         * @param a posicion en el array.
+         */
         private void movX(int a, int b, int espacios) {
             //Movimiento horizontal
             for (int i = 0; i < bNumber[0].WIDTH; i++) {
@@ -446,6 +536,14 @@ public class PanelGif extends JPanel {
             }
         }
 
+        /**
+         * <h1>Girar</h1>
+         * <p>
+         * Gira los rectangulos para ubicarlos en la posicion debida.</p>
+         *
+         * @param a posicion en el array
+         * @param b posicion en el array
+         */
         private void girar(int a, int b) {
             //Movimiento vertical
             for (int i = 0; i < bNumber[0].HEIGHT; i++) {

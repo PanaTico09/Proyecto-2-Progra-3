@@ -30,14 +30,18 @@ public class MovimientoNodos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         botonVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         botonMergeSort = new javax.swing.JButton();
-        gifPanel = new ui.PanelGif();
         botonGenerar = new javax.swing.JButton();
+        gifPanel = new ui.PanelGif();
+        jLabel3 = new javax.swing.JLabel();
         botonBrickSort = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+
+        jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -72,10 +76,6 @@ public class MovimientoNodos extends javax.swing.JFrame {
         getContentPane().add(botonMergeSort);
         botonMergeSort.setBounds(160, 500, 140, 40);
 
-        gifPanel.setAlignmentX(1.0F);
-        getContentPane().add(gifPanel);
-        gifPanel.setBounds(770, 310, 410, 450);
-
         botonGenerar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonGenerar.setText("Generar");
         botonGenerar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +85,15 @@ public class MovimientoNodos extends javax.swing.JFrame {
         });
         getContentPane().add(botonGenerar);
         botonGenerar.setBounds(160, 350, 140, 40);
+
+        gifPanel.setAlignmentX(1.0F);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        gifPanel.add(jLabel3);
+
+        getContentPane().add(gifPanel);
+        gifPanel.setBounds(770, 310, 410, 450);
 
         botonBrickSort.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonBrickSort.setText("BrickSort");
@@ -116,6 +125,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
     private void botonMergeSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMergeSortActionPerformed
         if (!terminarEjecutar) {
             gifPanel.ordenarMerge();
+            jLabel3.setText("MergeSort");
         }
     }//GEN-LAST:event_botonMergeSortActionPerformed
 
@@ -128,6 +138,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
     private void botonBrickSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBrickSortActionPerformed
         if (!terminarEjecutar) {
             gifPanel.ordenarBrick();
+            jLabel3.setText("BrickSort");
         }
         
     }//GEN-LAST:event_botonBrickSortActionPerformed
@@ -178,5 +189,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
     private ui.PanelGif gifPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
