@@ -380,10 +380,79 @@ public class PanelGif extends JPanel {
          * @param a posicion en el array.
          */
         private void mergeP4(int a) {
-            ordenar(a, a + 2, 2);
-            ordenar(a + 1, a + 2, 1);
-            ordenar(a + 2, a + 3, 1);
-            ordenar(a + 1, a + 2, 1);
+            if (bNumber[a + 2].getValue() <= bNumber[a].getValue() && bNumber[a + 3].getValue() <= bNumber[a].getValue()) { //Si la segunda sublista es menor a la primera sub lista
+                BoxNumber aux = bNumber[a];
+                BoxNumber aux2 = bNumber[a + 1];
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a].x += 2;
+                    bNumber[a + 1].x += 2;
+                    bNumber[a + 2].x -= 2;
+                    bNumber[a + 3].x -= 2;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a] = bNumber[a + 2];
+                bNumber[a + 2] = aux;
+                bNumber[a + 1] = bNumber[a + 3];
+                bNumber[a + 3] = aux2;
+            } else if (bNumber[a + 2].getValue() <= bNumber[a].getValue() && bNumber[a + 3].getValue() > bNumber[a + 1].getValue()) { //Primero seg sublista es menor a primero pri sub lista 
+                BoxNumber aux = bNumber[a];                                                                                          //Y Segundo seg sublista es mayor a segundo pri sublista.   
+                BoxNumber aux2 = bNumber[a + 1];
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a].x += 1;
+                    bNumber[a + 1].x += 1;
+                    bNumber[a + 2].x -= 2;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a] = bNumber[a + 2];
+                bNumber[a + 1] = aux;
+                bNumber[a + 2] = aux2;
+            } else if (bNumber[a + 2].getValue() >= bNumber[a].getValue() && bNumber[a + 3].getValue() < bNumber[a + 1].getValue()) { //Primero seg sublista mayor a primero pri sub lista
+                BoxNumber aux = bNumber[a + 1];                                                                                      //Y Segundo seg sublista menor a segundo pri sub lista
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a + 1].x += 2;
+                    bNumber[a + 2].x -= 1;
+                    bNumber[a + 3].x -= 1;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a + 1] = bNumber[a + 2];
+                bNumber[a + 2] = bNumber[a + 3];
+                bNumber[a + 3] = aux;
+            } else if (bNumber[a + 2].getValue() < bNumber[a].getValue() && bNumber[a + 3].getValue() >= bNumber[a].getValue()) {
+                BoxNumber aux = bNumber[a];
+                BoxNumber aux2 = bNumber[a + 1];
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a].x += 1;
+                    bNumber[a + 1].x += 2;
+                    bNumber[a + 2].x -= 2;
+                    bNumber[a + 3].x -= 1;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a] = bNumber[a + 2];
+                bNumber[a + 1] = aux;
+                bNumber[a + 2] = bNumber[a + 3];
+                bNumber[a + 3] = aux2;
+            } else {
+                ordenar(a, a + 2, 2);
+                ordenar(a + 1, a + 2, 1);
+                ordenar(a + 2, a + 3, 1);
+                ordenar(a + 1, a + 2, 1);
+            }
         }
 
         /**
@@ -394,14 +463,62 @@ public class PanelGif extends JPanel {
          * @param a posicion en el array.
          */
         private void mergeP5(int a) {
-            ordenar(a, a + 4, 4);
-            ordenar(a + 1, a + 4, 3);
-            ordenar(a + 2, a + 4, 2);
-            ordenar(a + 3, a + 4, 1);
-            ordenar(a + 4, a + 5, 1);
-            ordenar(a + 3, a + 4, 1);
-            ordenar(a + 2, a + 3, 1);
-            ordenar(a + 1, a + 2, 1);
+            if (bNumber[a + 4].getValue() <= bNumber[a].getValue() && bNumber[a + 5].getValue() <= bNumber[a].getValue()) {
+                BoxNumber aux = bNumber[a];
+                BoxNumber aux2 = bNumber[a + 1];
+                BoxNumber aux3 = bNumber[a + 2];
+                BoxNumber aux4 = bNumber[a + 3];
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a].x += 2;
+                    bNumber[a + 1].x += 2;
+                    bNumber[a + 2].x += 2;
+                    bNumber[a + 3].x += 2;
+                    bNumber[a + 4].x -= 4;
+                    bNumber[a + 5].x -= 4;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a] = bNumber[a + 4];
+                bNumber[a + 1] = bNumber[a + 5];
+                bNumber[a + 2] = aux;
+                bNumber[a + 3] = aux2;
+                bNumber[a + 4] = aux3;
+                bNumber[a + 5] = aux4;
+            } else if (bNumber[a + 4].getValue() <= bNumber[a].getValue() && bNumber[a + 5].getValue() > bNumber[a + 3].getValue()) {
+                BoxNumber aux = bNumber[a];
+                BoxNumber aux2 = bNumber[a + 1];
+                BoxNumber aux3 = bNumber[a + 2];
+                BoxNumber aux4 = bNumber[a + 3];
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a].x += 1;
+                    bNumber[a + 1].x += 1;
+                    bNumber[a + 2].x += 1;
+                    bNumber[a + 3].x += 1;
+                    bNumber[a + 4].x -= 4;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                bNumber[a] = bNumber[a + 4];
+                bNumber[a + 1] = aux;
+                bNumber[a + 2] = aux2;
+                bNumber[a + 3] = aux3;
+                bNumber[a + 4] = aux4;
+            } else {
+                ordenar(a, a + 4, 4);
+                ordenar(a + 1, a + 4, 3);
+                ordenar(a + 2, a + 4, 2);
+                ordenar(a + 3, a + 4, 1);
+                ordenar(a + 4, a + 5, 1);
+                ordenar(a + 3, a + 4, 1);
+                ordenar(a + 2, a + 3, 1);
+                ordenar(a + 1, a + 2, 1);
+            }
         }
 
         /**
