@@ -20,7 +20,7 @@ public class PanelGif extends JPanel {
 
     private final int NUM_BOX = 6;
     private final Dimension dimension = new Dimension(320, 128);
-    private final int max = 12;
+    private final int max = 15;
     private final int min = 1;
     private BoxNumber[] bNumber;
 
@@ -398,7 +398,7 @@ public class PanelGif extends JPanel {
                 bNumber[a + 2] = aux;
                 bNumber[a + 1] = bNumber[a + 3];
                 bNumber[a + 3] = aux2;
-            } else if (bNumber[a + 2].getValue() <= bNumber[a].getValue() && bNumber[a + 3].getValue() > bNumber[a + 1].getValue()) { //Primero seg sublista es menor a primero pri sub lista 
+            } else if (bNumber[a + 2].getValue() <= bNumber[a].getValue() && bNumber[a + 3].getValue() >= bNumber[a + 1].getValue()) { //Primero seg sublista es menor a primero pri sub lista 
                 BoxNumber aux = bNumber[a];                                                                                          //Y Segundo seg sublista es mayor a segundo pri sublista.   
                 BoxNumber aux2 = bNumber[a + 1];
                 for (int i = 0; i < bNumber[0].WIDTH; i++) {
@@ -414,7 +414,7 @@ public class PanelGif extends JPanel {
                 bNumber[a] = bNumber[a + 2];
                 bNumber[a + 1] = aux;
                 bNumber[a + 2] = aux2;
-            } else if (bNumber[a + 2].getValue() >= bNumber[a].getValue() && bNumber[a + 3].getValue() < bNumber[a + 1].getValue()) { //Primero seg sublista mayor a primero pri sub lista
+            } else if (bNumber[a + 2].getValue() >= bNumber[a].getValue() && bNumber[a + 3].getValue() <= bNumber[a + 1].getValue()) { //Primero seg sublista mayor a primero pri sub lista
                 BoxNumber aux = bNumber[a + 1];                                                                                      //Y Segundo seg sublista menor a segundo pri sub lista
                 for (int i = 0; i < bNumber[0].WIDTH; i++) {
                     bNumber[a + 1].x += 2;
@@ -429,8 +429,8 @@ public class PanelGif extends JPanel {
                 bNumber[a + 1] = bNumber[a + 2];
                 bNumber[a + 2] = bNumber[a + 3];
                 bNumber[a + 3] = aux;
-            } else if (bNumber[a + 2].getValue() < bNumber[a].getValue() && bNumber[a + 3].getValue() >= bNumber[a].getValue()) {
-                BoxNumber aux = bNumber[a];
+            } else if (bNumber[a + 2].getValue() <= bNumber[a].getValue() && bNumber[a + 3].getValue() >= bNumber[a].getValue()) { //Primero seg sublista menor a primero pri sublista
+                BoxNumber aux = bNumber[a];                                                                                      //Y segundo seg sublista mayor a primero pri sublista.   
                 BoxNumber aux2 = bNumber[a + 1];
                 for (int i = 0; i < bNumber[0].WIDTH; i++) {
                     bNumber[a].x += 1;
@@ -447,10 +447,7 @@ public class PanelGif extends JPanel {
                 bNumber[a + 1] = aux;
                 bNumber[a + 2] = bNumber[a + 3];
                 bNumber[a + 3] = aux2;
-            } else {
-                ordenar(a, a + 2, 2);
-                ordenar(a + 1, a + 2, 1);
-                ordenar(a + 2, a + 3, 1);
+            } else{
                 ordenar(a + 1, a + 2, 1);
             }
         }
