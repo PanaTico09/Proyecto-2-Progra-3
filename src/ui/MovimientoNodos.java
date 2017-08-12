@@ -50,7 +50,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonVolver);
-        botonVolver.setBounds(160, 560, 140, 40);
+        botonVolver.setBounds(160, 580, 140, 40);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,9 +70,11 @@ public class MovimientoNodos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonMergeSort);
-        botonMergeSort.setBounds(160, 440, 140, 40);
+        botonMergeSort.setBounds(160, 500, 140, 40);
+
+        gifPanel.setAlignmentX(1.0F);
         getContentPane().add(gifPanel);
-        gifPanel.setBounds(650, 270, 660, 490);
+        gifPanel.setBounds(770, 310, 410, 450);
 
         botonGenerar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonGenerar.setText("Generar");
@@ -82,7 +84,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonGenerar);
-        botonGenerar.setBounds(160, 380, 140, 40);
+        botonGenerar.setBounds(160, 350, 140, 40);
 
         botonBrickSort.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonBrickSort.setText("BrickSort");
@@ -92,7 +94,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonBrickSort);
-        botonBrickSort.setBounds(160, 500, 140, 40);
+        botonBrickSort.setBounds(160, 420, 140, 40);
 
         botonSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botonSalir.setText("Salir");
@@ -102,7 +104,7 @@ public class MovimientoNodos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonSalir);
-        botonSalir.setBounds(160, 620, 140, 40);
+        botonSalir.setBounds(160, 660, 140, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

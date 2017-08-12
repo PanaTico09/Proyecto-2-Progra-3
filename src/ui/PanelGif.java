@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import da.BoxNumber;
@@ -23,7 +18,7 @@ import javax.swing.SwingWorker;
  */
 public class PanelGif extends JPanel {
 
-    private final int NUM_BOX = 8;
+    private final int NUM_BOX = 6;
     private final Dimension dimension = new Dimension(320, 128);
     private final int max = 12;
     private final int min = 1;
@@ -49,8 +44,10 @@ public class PanelGif extends JPanel {
     }
 
     /**
-     * Genera 5 numeros al azar y asigna a casillas posicion las casillas en el
-     * panel
+     * <h1>Generar</h1>
+     * <p>
+     * Genera numeros al azar y asigna la posicion a las casillas en el
+     * panel.</p>
      */
     public void generar() {
         bNumber = new BoxNumber[NUM_BOX];
@@ -66,7 +63,9 @@ public class PanelGif extends JPanel {
     }
 
     /**
-     * Comando para ordenar el array de numeros con el metodo merge
+     * <h1>OrdenarMerge</h1>
+     * <p>
+     * Comando para ordenar el array de numeros con el metodo merge</p>
      */
     public void ordenarMerge() {
         if (bNumber != null) {
@@ -76,7 +75,9 @@ public class PanelGif extends JPanel {
     }
 
     /**
-     * Comando para ordenar el array de numeros con el metodo brick
+     * <h1>OrdenarBrick</h1>
+     * <p>
+     * Comando para ordenar el array de numeros con el metodo brick</p>
      */
     public void ordenarBrick() {
         if (bNumber != null) {
@@ -144,7 +145,7 @@ public class PanelGif extends JPanel {
                 repaint();
             }
 
-            //movimiento vertical
+            //Movimiento vertical
             for (int i = 0; i < bNumber[0].HEIGHT; i++) {
                 bNumber[a].y += 1;
                 bNumber[b].y -= 1;
@@ -157,15 +158,16 @@ public class PanelGif extends JPanel {
         }
     }
 
-    public class MergeWorker extends SwingWorker<Void, Void> { //Aun no funciona como Merge
+    public class MergeWorker extends SwingWorker<Void, Void> { //Solo separa la lista (ACTUALMENTE)
 
         private final int velocidad = 8; //velocidad de animacion (milisegundos)  
         public boolean completado = false;
 
         @Override
         protected Void doInBackground() throws Exception {
+            separar();
+            unir();
             merges(bNumber);
-            
             JOptionPane.showMessageDialog(null, "El arreglo ha sido ordenado correctamente.");
             MovimientoNodos.terminarEjecutar = false;
             return null;
@@ -177,67 +179,181 @@ public class PanelGif extends JPanel {
 
         }
 
-        private void mergeSort(BoxNumber[] a, BoxNumber[] aux, int left, int right) {
-            if (left < right) {
-                int center = (left + right) / 2;
-                separar(center);
-//                JOptionPane.showMessageDialog(null, "");
-                mergeSort(a, aux, left, center);
-                
-                mergeSort(a, aux, center + 1, right);
-                merge(a, aux, left, center + 1, right);
+        private void mergeSort(BoxNumber[] a, BoxNumber[] aux, int izq, int der) {
+            if (izq < der) {
+                int centro = (izq + der) / 2;
+//                separar(centro);
+                mergeSort(a, aux, izq, centro);
+
+                mergeSort(a, aux, centro + 1, der);
+                merge(a, aux, izq, centro + 1, der);
             }
         }
 
-        private void merge(BoxNumber[] a, BoxNumber[] tmp, int left, int right, int rightEnd) {
-            int leftEnd = right - 1;
-            int k = left;
-            int num = rightEnd - left + 1;
+        private void merge(BoxNumber[] a, BoxNumber[] aux, int izq, int der, int derFin) {
+            int izqFin = der - 1;
+            int k = izq;
+            int num = derFin - izq + 1;
 
-            while (left <= leftEnd && right <= rightEnd) {
-                if (a[left].getValue() <= a[right].getValue()) {
-                    tmp[k++] = a[left++];
+            while (izq <= izqFin && der <= derFin) {
+                if (a[izq].getValue() <= a[der].getValue()) {
+                    aux[k++] = a[izq++];
 
                 } else {
-                    tmp[k++] = a[right++];
+                    aux[k++] = a[der++];
                 }
             }
 
-            while (left <= leftEnd) // Copy rest of first half
-            {
-                tmp[k++] = a[left++];
+            while (izq <= izqFin) {
+                aux[k++] = a[izq++];
             }
 
-            while (right <= rightEnd) // Copy rest of right half
-            {
-                tmp[k++] = a[right++];
+            while (der <= derFin) {
+                aux[k++] = a[der++];
             }
 
-            // Copy tmp back
-            for (int i = 0; i < num; i++, rightEnd--) {
-                a[rightEnd] = tmp[rightEnd];
+            for (int i = 0; i < num; i++, derFin--) {
+                a[derFin] = aux[derFin];
 
             }
         }
 
-        private void separar(int mitad) {
-            int cantCajas = mitad;
+        private void separar() {
+            int cantCajas = bNumber.length - 1;
+            int mitad = cantCajas / 2;
             while (cantCajas >= 0) {
-                for (int i = 0; i < bNumber[0].HEIGHT; i++) {
-                    bNumber[cantCajas].y += 1;
+                while (mitad >= 0) {
+                    for (int i = 0; i < bNumber[0].HEIGHT; i++) {
+                        bNumber[mitad].y += 1;
+                        try {
+                            Thread.sleep(velocidad);
+                        } catch (InterruptedException e) {
+                        }
+                        repaint();
+                    }
+                    mitad--;
+                }
+                cantCajas--;
+                mitad = cantCajas / 2;
+            }
+
+            cantCajas = bNumber.length - 1;
+            mitad = cantCajas / 2 + 1;
+            int cont = mitad - 1;
+            int j = 1;
+            while (cont <= cantCajas) {
+                while (mitad <= cantCajas) {
+                    for (int i = 0; i < bNumber[mitad].HEIGHT; i++) {
+                        bNumber[mitad].y -= 2;
+                        try {
+                            Thread.sleep(velocidad * 2);
+                        } catch (InterruptedException e) {
+                        }
+                        repaint();
+                    }
+                    mitad++;
+                }
+                cont++;
+                j++;
+                mitad = cantCajas / 2 + j;
+            }
+        }
+
+        private void unir() {
+            int a = 0;
+            unirP1(a);
+            a += 2;
+            unirP2(a);
+            a += 2;
+            unirP3(a);
+        }
+
+        private void unirP1(int a) {
+            movY(a);
+            if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
+                for (int i = 0; i < bNumber[a].HEIGHT; i++) {
+                    bNumber[a + 1].y -= 1;
                     try {
                         Thread.sleep(velocidad);
                     } catch (InterruptedException e) {
                     }
                     repaint();
                 }
-                cantCajas--;
+                for (int i = 0; i < bNumber[0].HEIGHT; i++) {
+                    bNumber[a].y -= 1;
+                    bNumber[a + 1].y += 1;
+                    try {
+                        Thread.sleep(velocidad);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+                for (int i = 0; i < bNumber[0].WIDTH; i++) {
+                    bNumber[a].x += 1;
+                    bNumber[a + 1].x -= 1;
+                    try {
+                        Thread.sleep(velocidad);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+            } else {
+                movY(a);
             }
         }
 
-        private void unir() {
-            int a = 0;
-            for (int i = 0; i < bNumber[0].HEIGHT; i++) {
+        private void unirP2(int a) {
+            if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
+                primerMovXY(a);
+                for (int i = 0; i < bNumber[a].HEIGHT; i++) {
+                    bNumber[a + 1].y += 1;
+                    bNumber[a].y += 1;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+            } else {
+                for (int i = 0; i < bNumber[a].HEIGHT; i++) {
+                    bNumber[a].y -= 1;
+                    bNumber[a + 1].y += 3;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+            }
+        }
+
+        private void unirP3(int a) {
+            if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
+                primerMovXY(a);
+                for (int i = 0; i < bNumber[a].HEIGHT; i++) {
+                    bNumber[a + 1].y += 2;
+                    bNumber[a].y += 4;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+            } else {
+                for (int i = 0; i < bNumber[a].HEIGHT; i++) {
+                    bNumber[a + 1].y += 4;
+                    bNumber[a].y += 2;
+                    try {
+                        Thread.sleep(velocidad * 2);
+                    } catch (InterruptedException e) {
+                    }
+                    repaint();
+                }
+            }
+        }
+
+        private void movY(int a) {
+            for (int i = 0; i < bNumber[a].HEIGHT; i++) {
                 bNumber[a].y -= 1;
                 try {
                     Thread.sleep(velocidad);
@@ -245,13 +361,31 @@ public class PanelGif extends JPanel {
                 }
                 repaint();
             }
-            if (bNumber[a].getValue() > bNumber[a + 1].getValue()) {
-                girar(a, a + 1);
+        }
+
+        private void primerMovXY(int a) {
+            for (int i = 0; i < bNumber[a].HEIGHT; i++) {
+                bNumber[a + 1].y += 2;
+                bNumber[a].y -= 2;
+                try {
+                    Thread.sleep(velocidad);
+                } catch (InterruptedException e) {
+                }
+                repaint();
+            }
+            for (int i = 0; i < bNumber[a].WIDTH; i++) {
+                bNumber[a].x += 1;
+                bNumber[a + 1].x -= 1;
+                try {
+                    Thread.sleep(velocidad);
+                } catch (InterruptedException e) {
+                }
+                repaint();
             }
         }
 
         private void girar(int a, int b) {
-//            Movimiento Vertical
+            // Movimiento Vertical
             for (int i = 0; i < bNumber[0].HEIGHT; i++) {
                 bNumber[a].y -= 1;
                 bNumber[b].y += 1;
@@ -273,7 +407,7 @@ public class PanelGif extends JPanel {
                 repaint();
             }
 
-            //movimiento vertical
+            //Movimiento vertical
             for (int i = 0; i < bNumber[0].HEIGHT; i++) {
                 bNumber[a].y += 1;
                 bNumber[b].y -= 1;
