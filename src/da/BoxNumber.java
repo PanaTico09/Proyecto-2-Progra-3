@@ -72,6 +72,10 @@ public class BoxNumber {
     public int getValue() {
         return Integer.valueOf(number);
     }
+    
+    public void setValue(int number){
+        this.number = Integer.toString(number);
+    }
 
     /**
      * Obtiene las dimensiones de un texto
